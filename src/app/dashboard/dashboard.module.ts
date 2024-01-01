@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardComponent } from './components/dashboard.component';
+import { HeaderComponent } from '../shared-component/header/components/header.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { DashboardComponent } from './components/dashboard.component';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    HeaderComponent,
   ],
 })
 export class DashboardModule {
