@@ -45,11 +45,11 @@ export class UserFormComponent {
       }),
       email: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.email],
       }),
       age: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/^[0-9]+$/)],
       }),
     });
   }
