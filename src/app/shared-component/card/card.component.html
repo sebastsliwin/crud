@@ -10,6 +10,6 @@
   </mat-card-content>
 </mat-card>
 
-<ng-container *ngIf='isLoading'>
+@if (isLoading) {
   <app-loader></app-loader>
-</ng-container>
+}

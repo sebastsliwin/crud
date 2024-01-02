@@ -1,0 +1,9 @@
+<mat-form-field class="w-100">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput
+         (blur)="onBlur()"
+         [formControl]="control"
+         [matTooltip]="tooltip"
+         [type]="type"
+         [placeholder]="placeholder">
+</mat-form-field>

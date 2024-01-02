@@ -1,7 +1,7 @@
-import { Size } from '../../../shared/model/size.model';
+import { Size } from '../../../shared/models/size.model';
 
 export const SizeStyles = {
-  [Size.LARGE]: 'nat-h1',
-  [Size.MEDIUM]: 'nat-h3',
-  [Size.SMALL]: 'nat-h6',
+  [Size.LARGE]: 'mat-h1',
+  [Size.MEDIUM]: 'mat-h3',
+  [Size.SMALL]: 'mat-h6',
 };

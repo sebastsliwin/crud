@@ -1,0 +1,46 @@
+<div class="grid-container">
+  <div class="d-flex align-items-start justify-content-between">
+    <app-header class="mb-2" icon="person" label="Użytkownicy"></app-header>
+
+    <a [routerLink]="[path.CREATE]" class="btn btn-primary">Stwórz użytkownika</a>
+  </div>
+
+  @if (view$ | async; as view) {
+    <app-card [isLoading]="view.loading">
+      <app-table card-content [tableData]="view.users" [displayedColumns]="displayedColumns">
+        <ng-container matSort>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Imię</th>
+            <td mat-cell *matCellDef="let row">
+              <a [routerLink]="row.id">{{ row.name }}</a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef>Wiek</th>
+            <td mat-cell *matCellDef="let row">{{ row.age }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row" class="text-end">
+              <button [matMenuTriggerFor]="menu" mat-icon-button>
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #menu="matMenu">
+                <a [routerLink]="[row.id]" mat-menu-item>Edytuj</a>
+                <button (click)="deleteUser(row.id)" mat-menu-item>Usuń</button>
+              </mat-menu>
+            </td>
+          </ng-container>
+        </ng-container>
+      </app-table>
+    </app-card>
+  }
+</div>

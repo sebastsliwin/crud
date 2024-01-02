@@ -1,0 +1,9 @@
+<div class="grid-container">
+  <app-header class="mb-2" icon="person" label="Edytuj użytkownika"></app-header>
+
+  @if (userView$ | async; as view) {
+    <app-card [isLoading]="view.loading">
+      <app-user-form card-content [details]="view.user" (emitSave)="updateUser($event)"></app-user-form>
+    </app-card>
+  }
+</div>

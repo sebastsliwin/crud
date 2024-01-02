@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AppRoutePath } from './shared/model/app-route-path.model';
+import { AppRoutePath } from './shared/models/app-route-path.model';
 
 export const routes: Routes = [
   {
@@ -9,10 +9,11 @@ export const routes: Routes = [
   },
   {
     path: AppRoutePath.DASHBOARD,
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {
-    path: AppRoutePath.CRUD,
-    loadChildren: () => import('./crud/crud.module').then(m => m.CrudModule),
+    path: AppRoutePath.USERS,
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
   },
 ];

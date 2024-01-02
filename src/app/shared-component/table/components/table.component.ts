@@ -1,29 +1,60 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  ContentChildren,
+  Input,
+  QueryList,
+  ViewChild,
+} from '@angular/core';
+import { MatColumnDef, MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { TableDatasourceModel, TableItem } from '../models/table-datasource.model';
+import {
+  TableDataGenericType,
+  TableDatasourceModel,
+} from '../models/table-datasource.model';
 import { TableModules } from './table.modules';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: TableModules,
+  imports: [TableModules],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements AfterViewInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<TableItem>;
-  dataSource = new TableDatasourceModel();
+export class TableComponent implements AfterContentInit {
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ContentChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatTable, { static: true }) table!: MatTable<TableDataGenericType>;
+  @ContentChildren(MatColumnDef) columnDefs: QueryList<MatColumnDef>;
+  dataSource = new TableDatasourceModel([]);
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  @Input() set tableData(data: TableDataGenericType[]) {
+    if (!data) {
+      return;
+    }
 
-  ngAfterViewInit(): void {
+    this._initTable(data);
+  }
+  @Input() displayedColumns: string[] = [];
+  @Input() isLoading: boolean;
+
+  ngAfterContentInit(): void {
+    this._setColumnDef();
+  }
+
+  private _setColumnDef(): void {
+    for (const column of this.columnDefs) {
+      this.table.addColumnDef(column);
+    }
+  }
+
+  private _initTable(data: TableDataGenericType[]): void {
+    this.dataSource = new TableDatasourceModel(data);
+    this.table.dataSource = this.dataSource;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
   }
 }

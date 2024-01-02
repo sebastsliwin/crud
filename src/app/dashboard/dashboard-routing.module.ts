@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
-import { AppChildrenRoutePath } from '../shared/model/app-route-path.model';
+import { AppChildrenRoutePath } from '../shared/models/app-route-path.model';
 
 const routes: Routes = [
   {
@@ -14,5 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {
-}
+export class DashboardRoutingModule {}

@@ -1,0 +1,7 @@
+<div class="grid-container">
+  <app-header class="mb-2" icon="person" label="Stwórz użytkownika"></app-header>
+
+  <app-card>
+    <app-user-form card-content (emitSave)="createUser($event)"></app-user-form>
+  </app-card>
+</div>
