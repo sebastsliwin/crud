@@ -1,18 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 // regular style toast
-@import 'ngx-toastr/toastr';
+@use '../node_modules/ngx-toastr/toastr.css' as *;
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@use '../node_modules/bootstrap/scss/bootstrap' as *;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.grid-container {
-  margin: 20px;
-}
-
-.btn-primary {
-  background: #3f51b5;
-}
+@use 'base' as *;
+@use 'colors' as *;
+@use 'buttons' as *;

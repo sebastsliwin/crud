@@ -28,6 +28,11 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/theme"
+              ]
+            },
             "scripts": []
           },
           "configurations": {

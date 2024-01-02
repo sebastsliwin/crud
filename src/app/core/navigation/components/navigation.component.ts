@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,15 +16,17 @@ import { MODULES } from './navigation.modules';
   styleUrls: ['./navigation.component.scss'],
   standalone: true,
   imports: MODULES,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NavigationComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
-  readonly isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  readonly isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
       map(({ matches }) => matches),
-      shareReplay(),
+      shareReplay()
     );
 
   readonly navigationItems = NavigationItems;
