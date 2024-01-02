@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start" : "node server.js",
-    "build": "ng build",
-    "heroku-postbuild": "ng build",
+    "heroku-postbuild": "ng build --base-href browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
