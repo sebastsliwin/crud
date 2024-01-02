@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start" : "node server.js",
+    "start": "nodemon server.js",
     "build": "ng build",
-    "heroku-postbuild": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -14,8 +13,10 @@
   "dependencies": {
     "@angular/animations": "^17.0.8",
     "@angular/cdk": "~17.0.4",
+    "@angular/cli": "^17.0.8",
     "@angular/common": "^17.0.0",
     "@angular/compiler": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
     "@angular/core": "^17.0.0",
     "@angular/forms": "^17.0.0",
     "@angular/material": "^17.0.4",
@@ -29,13 +30,12 @@
     "bootstrap": "^5.3.2",
     "express": "^4.18.2",
     "ngx-toastr": "^18.0.0",
+    "nodemon": "^3.0.2",
     "path": "^0.12.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2",
-    "@angular/cli": "^17.0.8",
-    "@angular/compiler-cli": "^17.0.0",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.8",
