@@ -1,4 +1,4 @@
-import { User, UserId } from '../models/users.model';
+import { User, UserId, users } from '../models/users.model';
 
 export const getUsers = (): User[] => {
   const localUsers = sessionStorage.getItem('localUsers');
@@ -7,26 +7,7 @@ export const getUsers = (): User[] => {
     return JSON.parse(localUsers);
   }
 
-  return [
-    {
-      id: 0,
-      name: 'Jan Kowalski',
-      age: 30,
-      email: 'jan.kowalski@example.com',
-    },
-    {
-      id: 1,
-      name: 'Anna Nowak',
-      age: 25,
-      email: 'anna.nowak@example.com',
-    },
-    {
-      id: 2,
-      name: 'Bartosz Malinowski',
-      age: 40,
-      email: 'bartosz.malinowski@example.com',
-    },
-  ];
+  return users;
 };
 
 export const addUser = (user: User, users: User[]): void => {
